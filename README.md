@@ -24,25 +24,28 @@ increase the maximum number of rows to display the entire dataframe
 
 ## Program:
 ```
-
 import pandas as pd
-from sklearn import linear_model
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import seaborn as sns
+X1 = pd.read_csv("clustering.csv")
+print (X1. head(2))
+X2 = X1.loc[:, ['ApplicantIncome', 'LoanAmount' ]]
+print(X2. head(2))
+X = X2.values
+sns.scatterplot(X[:,0], X[:, 1])
+plt.xlabel('Income')
+plt.ylabel('Loan')
+plt.show( )
+kmean=KMeans(n_clusters=4)
+kmean. fit(X)
+print('Cluster Centers: ',kmean.cluster_centers_)
+print('Labels: ',kmean.labels_)
+# predict the class for ApplicantIncome 9060 and Loanamount 120
+predicted_class = kmean.predict([[9000, 120]])
+print('The cluster group for Applicant Income 9000 and Loanamount is',predicted_class)
 
-df = pd.read_csv("cars.csv")
 
-X = df[['Weight', 'Volume']]
-y = df['CO2']
-
-regr = linear_model.LinearRegression()
-regr.fit(X,y)
-#Cofficients and intercept of Model
-print('Coefficients: ', regr.coef_) 
-print('Intercept: ',regr.intercept_)
-
-#predict the CO2 emission of a car where the weight is 300kg, and the volume is 1300cm3:
-predictedCO2 = regr.predict([[3300, 1300]])
-print('Predicted CO2 for the corresponding weight and volume', predictedCO2)
 
 ```
 ## Output:
