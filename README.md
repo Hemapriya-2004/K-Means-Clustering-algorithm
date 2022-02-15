@@ -43,10 +43,7 @@ print('Cluster Centers: ',kmean.cluster_centers_)
 print('Labels: ',kmean.labels_)
 # predict the class for ApplicantIncome 9060 and Loanamount 120
 predicted_class = kmean.predict([[9000, 120]])
-print('The cluster group for Applicant Income 9000 and Loanamount is',predicted_class)
-
-
-
+print('The cluster group for Applicant Income 9000 and Loanamount is',predicted_class
 ```
 ## Output:
 
